@@ -1,0 +1,72 @@
+{% extends 'garden_app/main.html'%}
+
+{% block content %}
+
+<br>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Customer:</h5>
+            <hr>
+            <a class="btn btn-outline-info btn-sm btn-block" href="">Update 
+            Customer</a>
+            <a class="btn btn-outline-info btn-sm btn-block" href="">Delete 
+            Customer</a>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Employee Information</h5>
+            <hr>
+            <p>Employee ID: {{employeeInfo.employee_id}}</p>
+            <p>First Name: {{employeeInfo.first_name}}</p>
+            <p>Last Name: {{employeeInfo.last_name}}</p>
+            <p>Contact #: {{employeeInfo.phone_number}}</p>
+            <p>Type: {{employeeInfo.employee_type}}</p>
+            <p>Experience Level: {{employeeInfo.experience_level}}</p>
+            <p>Hours Work: {{employeeInfo.total_hours_worked}}</p>
+            <p>Status: {{employeeInfo.employee_status}}</p>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body">
+            {%for service in services %}
+            <p>Trained Equipments: {{service.equipment.equipment_name}}</p>
+            {% endfor %}
+            <hr>
+            <h1 style="text-align center;padding: 10px"></h1>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <h5>Services</h5>
+        </div>
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Service ID</th>
+                    <th>Service Request</th>
+                    <th>Date Conducted</th>
+                    <th>Equipment In Use</th>
+                </tr>
+                {% for service in services%}
+                <tr>
+                    <td>{{service.service_id}}</td>
+                    <td>{{service.service_request}}</td>
+                    <td>{{service.request_date}}</td>
+                    <td>{{service.equipment.equipment_name}}</td>
+                </tr>
+                {% endfor %}
+            </table>   
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

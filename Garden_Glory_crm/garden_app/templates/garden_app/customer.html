@@ -1,0 +1,75 @@
+{% extends 'garden_app/main.html'%}
+
+{% block content %}
+
+<br>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Customer:</h5>
+            <hr>
+            <a class="btn btn-outline-info btn-sm btn-block" href="{% url 'update_customer' customer.customer_id %}">Update 
+            Customer</a>
+            <a class="btn btn-outline-danger btn-sm btn-block" href="{% url 'delete_customer' customer.customer_id %}">Delete 
+            Customer</a>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Contact Information</h5>
+            <hr>
+            <p>Email: {{customer.email}}</p>
+            <p>Contact #: {{customer.contact_number}} </p>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Total Order</h5>
+            <hr>
+            <h1 style="text-align center;padding: 10px">{{services_count}}</h1>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <form method="get">
+
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Property</th>
+                    <th>Service ID</th>
+                    <th>Service Type</th>
+                    <th>Request Date</th>
+                </tr>
+                {% for service in services %}
+                <tr>
+                    <td>{{service.property.property_name}}</td>
+                    <td>{{service.service_id}}</td>
+                    <td>{{service.request_type}}</td>
+                    <td>{{service.request_date}}</td>
+                    <td><a class="btn btn-sm btn-info" href="">Update</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="">Delete</a></td>
+                </tr>
+
+                {% endfor %}
+            </table>   
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

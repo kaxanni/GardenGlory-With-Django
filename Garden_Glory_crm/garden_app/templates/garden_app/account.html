@@ -1,0 +1,39 @@
+{% extends 'garden_app/main.html'%}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+    <div class="col-md">
+        <a class="btn btn-primary btn-sm btn-block" href="" 
+            style="width: 250px; height: 30px;">Add Account</a>
+        <div class="card card-body">
+            <h5>Accounts</h5>
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>Account ID</th>
+                    <th>First Name </th>
+                    <th>Last Name </th>
+                    <th>Employee ID </th>
+                    <th>Role: </th>
+                    <th>Username</th>
+                </tr>
+                {% for account in accounts%}
+                <tr>
+                    <td>{{account.account_id}}</td>
+                    <td>{{account.employee_id.first_name}}</td>
+                    <td>{{account.employee_id.last_name}}</td>
+                    <td>{{account.employee_id.employee_id}}</td>
+                    <td>{{account.employee_id.employee_type}}</td>
+                    <td>{{account.account.usesrname}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

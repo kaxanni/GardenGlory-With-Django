@@ -1,0 +1,56 @@
+{% extends 'garden_app/main.html'%}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Property Info:</h5>
+            <hr>
+            <table>
+                <tr>
+                    <td>Property Name</td>
+                    <td>Customer Name</td>
+                    <td>Customer ID</td>
+
+                </tr>
+                <tr>
+                    <td>Street</td>
+                    <td>City</td>
+                    <td>Zip</td>
+                </tr>                         
+            </table>      
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col">
+        <a class="btn btn-primary btn-sm btn-block" href="{% url 'create_property' %}" 
+            style="width: 250px; height: 30px;">Add Property</a>
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Property ID</th>
+                    <th>Property Name</th>
+                
+                </tr>
+                <tr>
+                    {% for property in properties %}
+                    <tr>
+                        <td>{{property.property_id}}</td>
+                        <td>{{property.property_name}}</td>
+                        <td><a href="{% url 'update_property' property.property_id %}">Update</a></td>
+                        {% comment %} <td><a href="{% url 'delete_property' service.service_id %}">Delete</a></td> {% endcomment %}
+                    </tr>
+                    {% endfor %}
+                </tr>
+            </table>   
+        </div>
+    </div>
+</div>
+
+{% endblock %}

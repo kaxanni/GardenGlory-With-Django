@@ -1,0 +1,36 @@
+{% extends 'garden_app/main.html'%}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+    <div class="col-md">
+        <a class="btn btn-primary btn-sm btn-block" href="" 
+            style="width: 250px; height: 30px;">Add Employee</a>
+        <div class="card card-body">
+            <h5>Employees:</h5>
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th></th>  
+                    <th></th>          
+                    <th>Employee ID</th>
+                    <th>Employee First Name</th>
+                    <th>Employee Last Name</th>
+                </tr>
+                {%for employee in employees%}
+                <tr>
+                    <td><td><a href="{% url 'employeeInfo' employee.employee_id %}">View</a></td>
+                    <td>{{employee.employee_id}}</td>
+                    <td>{{employee.first_name}}</td>
+                    <td>{{employee.last_name}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

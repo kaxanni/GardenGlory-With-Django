@@ -1,0 +1,43 @@
+{% extends 'garden_app/main.html'%}
+
+{% block content %}
+
+<br>
+<div class="col-md">
+    <div class="card card-body">
+        <p>Trained Empoyee: </p>
+        <hr>
+        <h1 style="text-align center;padding: 10px"></h1>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col-md">
+        <a class="btn btn-primary btn-sm btn-block" href="" 
+            style="width: 250px; height: 30px;">Add Equipment</a>
+        <div class="card card-body">
+            <h5>Equipment</h5>
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>Equipment ID</th>
+                    <th>Equipment Name</th>
+                    <th>Quantity</th>
+                    
+                </tr>
+                {%for equipment in equipments%}
+                <tr>
+                    <td>{{equipment.equipment_id}}</td>
+                    <td>{{equipment.equipment_name}}</td>
+                    <td>{{equipment.quantity}}</td>
+                    
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

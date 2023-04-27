@@ -1,0 +1,48 @@
+{% extends 'garden_app/main.html'%}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Services</h5>
+        </div>
+        <div class="card card-body">
+    
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'create_service' %}" 
+            >Add Services</a>
+            <table class="table">
+                <tr>
+                    <th>Service ID</th>
+                    <th>Customer</th>
+                    <th>Property Name</th>
+                    <th>Service Type</th>
+                    <th>Request Date</th>
+                    <th>Service Request</th>
+                    <th>Equipment Used</th>
+                </tr>
+                {% for service in services%}
+                <tr>
+                    <td>{{service.service_id}}</td>
+                    <td> {% for customer in service.customer.all %}
+                        {{ customer.name }}
+                    {% endfor %}</td>
+                    <td>{{service.property.property_name}}</td>
+                    <td>{{service.request_type}}</td>
+                    <td>{{service.request_date}}</td>
+                    <td>{{service.service_request}}</td>
+                    <td>{{service.equipment.equipment_name}}</td>
+                    <td><a href="{% url 'update_service' service.service_id %}">Update</a></td>
+                    <td><a href="{% url 'delete_service' service.service_id %}">Delete</a></td>
+                    
+                </tr>
+                
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
